@@ -1,0 +1,25 @@
+.reveal code {
+    background-color: #444;
+}
+
+.reveal table td + td, 
+.reveal table th + th {
+	border-left: 1px dotted #666;
+}
+
+.reveal table th {
+	border-bottom: 7px double;
+	padding-bottom: .1em;
+}
+
+.reveal pre {
+	width: 95%;
+}
+
+.reveal pre code {
+	max-height: 500px;
+}
+
+.reveal img.outline {
+    border: 5px solid white;
+}

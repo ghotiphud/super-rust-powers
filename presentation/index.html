@@ -1,41 +1,224 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+	<link rel="stylesheet" href="custom.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
+				<textarea data-template>
+					# Rust Gives You Superpowers
+					### (Or it can feel that way) <!-- .element class="fragment" -->
+					<br />
+
+					Yale Cason III
+				</textarea>
+			</section>
+
+			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
+				<textarea data-template>
+					# What is it?
+
+					<img data-src="img/rust_homepage.png" /> <!-- .element class="fragment" -->
+
+					Note: 
+					To answer the question of what it is, I'll let their own site answer.
+
+					Performance, Reliability, & Productivity
+				</textarea>
+			</section>
+
+			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
+				<textarea data-template>
+					# Performance
+					## It's fast 
+					### (without being an expert) <!-- .element class="fragment" -->
+
+					<!---->
+					Note: 
+					The reason most people come to Rust... 
+					They want systems-level performance, and memory safety at the same time
+
+					;;;
+
+					So, why should I care?  
+					`XYZ` language is fast enough for me...
+
+					<!---->
+					Note:
+					The majority of our work is web based, and the majority is written with little concern given to CPU performance
+
+					We also know better than most that...
+
+					;;;
+
+					## Time is Money
+					💸
+
+					<img data-src="img/RPS_$40_server.png" class="fragment" />
+					
+					<!---->
+					Note:
+					We see a budget $40/month server hitting > 250k requests per second
+
+					This directly correlates to smaller EC2 instances, K8s containers, etc.  Saving money.
+
+					;;;
+
+					Example:
+
+					Rewriting an XML parser for a 2+ gig input file:
+
+					<div class="fragment">
+
+					| Language | Time  | Peak Memory | 
+					| -------- | ----: | ----------: |
+					| Java 11  |   28s |     ~ 900MB |
+					| Rust     |    8s |      ~ 40MB |
+
+					</div>
+
+					Theoretical Max with SSD @ 400 MB/s = 5s <!-- .element class="fragment" -->
+
+					<!---->
+					Note:
+					XML parser optimization needed due to growing size of input files, and growing time to process them.
+
+					First implmentation was a clean slate in Java 11, using StAX (WoodStox) to baseline the theoretical max.
+					Rust implmentation was mostly matching 1-to-1 code clone with no further optimization (quick_xml)
+					Theoretical max would be about 5s to just read the whole file from an average SSD
+
+					;;;
+
+					<iframe data-src="https://maxday.github.io/lambda-perf/" class="r-stretch"></iframe>
+
+					<!---->
+					Note:
+					Lambda Cold start impact
+
+					There are many times that I've had the same conversation about speeding up the cold start time of a Lambda. 
+					Not only do you save boot time, and runtime, but also the development time spent tuning those things.
+				</textarea>
+			</section>
+
+			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
+				<textarea data-template>
+					# Reliability & Productivity
+					## Let the compiler guide you
+
+					;;;
+
+					<div class="r-stack">
+						<img data-src="img/is_rust_overkill.png">
+						<img data-src="img/is_rust_overkill_resp_1.png" class="fragment outline">
+						<img data-src="img/is_rust_overkill_resp_1b.png" class="fragment outline">
+						<img data-src="img/is_rust_overkill_resp_2.png" class="fragment outline">
+					</div>
+
+					<!---->
+					Note:
+
+					https://www.reddit.com/r/rust/comments/11uwwhy/is_rust_overkill_for_most_backend_apps_that_could/
+				</textarea>
+			</section>
+
+			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
+				<textarea data-template>
+					# Bonus section
+					## More power!
+
+					<img data-src="img/Tool-Man.png">
+
+					;;;
+
+					Cross platform support?
+
+					- 8 Tier 1 (guaranteed to work)
+						- automated build & test
+					- 83 Tier 2 (guaranteed to compile)
+						- automated build
+					- 111 Tier 3 (support in codebase)
+						- no automation
+
+					;;;
+
+					Client-side code in Rust?
+
+					<img data-src="img/rust_wasm_site.png" class="fragment">
+
+					;;;
+
+					<iframe data-src="https://rustwasm.github.io/docs/book/" class="r-stretch"></iframe>
+
+					;;;
+
+					Write an OS in Rust?
+
+					<iframe data-src="https://os.phil-opp.com/" class="r-stretch"></iframe>
+
+					;;;
+
+					NodeJs integration?
+
+					<iframe data-src="https://neon-bindings.com/" class="r-stretch"></iframe>
+					
+					;;;
+
+					Python integration?
+
+					https://github.com/PyO3/pyo3
+					&
+					https://github.com/PyO3/maturin
+
+					;;;
+
+					PostgreSQL Plugin?
+
+					<iframe data-src="https://kaiwern.com/posts/2022/07/20/writing-postgresql-extension-in-rust-with-pgx/" class="r-stretch"></iframe>
+				</textarea>
+			</section>
+
+			<!--  <iframe data-src="" class="r-stretch"></iframe>  -->
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				showNotes: true,
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			showNotes: true,
+			hash: true,
+			history: true,
+			respondToHashChanges: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		// Add a keybinding to show/hide the speaker notes
+		Reveal.addKeyBinding({ keyCode: 65, key: 'A', description: 'Toggle Speaker Notes' }, () => {
+			Reveal.configure({ showNotes: !Reveal.getConfig().showNotes })
+		})
+	</script>
+</body>
+
 </html>
