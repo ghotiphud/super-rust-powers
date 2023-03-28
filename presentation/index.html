@@ -104,8 +104,8 @@
 					Note:
 					XML parser optimization needed due to growing size of input files, and growing time to process them.
 
-					First implmentation was a clean slate in Java 11, using StAX (WoodStox) to baseline the theoretical max.
-					Rust implmentation was mostly matching 1-to-1 code clone with no further optimization (quick_xml)
+					First implementation was a clean slate in Java 11, using StAX (WoodStox) to baseline the theoretical max.
+					Rust implementation was mostly matching 1-to-1 code clone with no further optimization (quick_xml)
 					Theoretical max would be about 5s to just read the whole file from an average SSD
 
 					;;;
@@ -119,7 +119,7 @@
 					There are many times that I've had the same conversation about speeding up the cold start time of a Lambda. 
 					Not only do you save boot time, and runtime, but also the development time spent tuning those things.
 
-					Doesn't Java snapstart fix this?  Well, it improves upon it, but it's still losing in coldstart performance to dotnet, node and python...
+					Doesn't Java snapstart fix this?  Well, it improves upon it, but it's still losing in cold start performance to dotnet, node and python...
 				</textarea>
 			</section>
 
@@ -190,7 +190,7 @@
 
 					<!---->
 					Note:
-					Fortunately, Rust has some approaches that make things more managable for us humans.
+					Fortunately, Rust has some approaches that make things more manageable for us humans.
 
 					The compiler can support us in parallelism and async concurrency usecases with clever tooling.
 					Again, I recommend watching the full talk.
