@@ -23,3 +23,12 @@
 .reveal img.outline {
     border: 5px solid white;
 }
+
+.reveal img {
+    object-fit: scale-down;
+    max-height: 700px;
+}
+
+.reveal iframe {
+    background-color: white;
+}

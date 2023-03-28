@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>Rust Superpowers</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -26,15 +26,21 @@
 					<br />
 
 					Yale Cason III
+
+					<!---->
+					Note:
+					Trying to keep this talk brief, so I won't dive into details like semantics or syntax, 
+					but stay at a high level like why you should give Rust a try, and you might just find something to like
 				</textarea>
 			</section>
 
 			<section data-markdown data-separator-vertical="^\n;;;\n" data-separator-notes="^Note:">
 				<textarea data-template>
-					# What is it?
+					# What is Rust?
 
 					<img data-src="img/rust_homepage.png" /> <!-- .element class="fragment" -->
 
+					<!---->
 					Note: 
 					To answer the question of what it is, I'll let their own site answer.
 
@@ -112,6 +118,8 @@
 
 					There are many times that I've had the same conversation about speeding up the cold start time of a Lambda. 
 					Not only do you save boot time, and runtime, but also the development time spent tuning those things.
+
+					Doesn't Java snapstart fix this?  Well, it improves upon it, but it's still losing in coldstart performance to dotnet, node and python...
 				</textarea>
 			</section>
 
@@ -120,19 +128,73 @@
 					# Reliability & Productivity
 					## Let the compiler guide you
 
+					<!---->
+					Note:
+					Okay, so Rust is fast and sips memory, and blah blah blah
+					but isn't it hard to learn and write the code?
+
+					Is it overkill?
+
 					;;;
 
 					<div class="r-stack">
-						<img data-src="img/is_rust_overkill.png">
-						<img data-src="img/is_rust_overkill_resp_1.png" class="fragment outline">
-						<img data-src="img/is_rust_overkill_resp_1b.png" class="fragment outline">
-						<img data-src="img/is_rust_overkill_resp_2.png" class="fragment outline">
+						<img src="img/is_rust_overkill.png">
+						<img src="img/is_rust_overkill_resp_1.png" class="fragment outline">
+						<img src="img/is_rust_overkill_resp_1b.png" class="fragment outline">
+						<img src="img/is_rust_overkill_resp_2.png" class="fragment outline">
 					</div>
 
 					<!---->
 					Note:
 
 					https://www.reddit.com/r/rust/comments/11uwwhy/is_rust_overkill_for_most_backend_apps_that_could/
+
+					;;;
+
+					# Reliable Concurrency?
+
+					<iframe width="700" height="400" src="https://www.youtube-nocookie.com/embed/Dbytx0ivH7Q" class="fragment" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					
+					<!---->
+					Note:
+					Didn't the website mention reliable concurrency?
+
+					I'm just going to totally rip off this fabulous talk that you should all watch:
+					https://www.youtube.com/watch?v=Dbytx0ivH7Q
+
+					;;;
+
+					<img data-src="img/microprocessor_graph.png" />
+
+					<!---->
+					Note:
+					So, why should we want concurrency?  
+					
+					Simply put, processors' single threaded performance, and clock speeds have hit a wall. 
+					At the same time, chip manufacturers have added more and more cores for us to use.
+
+					;;;
+
+					<img data-src="img/microprocessor_graph.png" />
+
+					<!---->
+					Note:
+					So, we'll do more computation concurrently to get around the issue.
+
+					Unfortunately, that's hard to get right in most languages. 
+					And potentially exploitable in the typical low level language.
+
+					;;;
+
+					<img data-src="img/fearless_concurrency.png" />
+
+					<!---->
+					Note:
+					Fortunately, Rust has some approaches that make things more managable for us humans.
+
+					The compiler can support us in parallelism and async concurrency usecases with clever tooling.
+					Again, I recommend watching the full talk.
+
 				</textarea>
 			</section>
 
@@ -145,7 +207,7 @@
 
 					;;;
 
-					Cross platform support?
+					## Cross platform support?
 
 					- 8 Tier 1 (guaranteed to work)
 						- automated build & test
@@ -163,6 +225,19 @@
 					;;;
 
 					<iframe data-src="https://rustwasm.github.io/docs/book/" class="r-stretch"></iframe>
+
+					;;;
+
+					Search your computer quickly?
+
+					<div class="r-stack">
+						<img data-src="img/ripgrep.png" class="fragment">
+						<img src="img/ripgrep_vscode.png" class="fragment outline">
+					</div>
+					
+					<!---->
+					Note:
+					(You've actually been using this the past 6 years... as of 2023)
 
 					;;;
 
@@ -189,10 +264,20 @@
 					PostgreSQL Plugin?
 
 					<iframe data-src="https://kaiwern.com/posts/2022/07/20/writing-postgresql-extension-in-rust-with-pgx/" class="r-stretch"></iframe>
+
+					;;;
+
+					<iframe data-src="https://github.com/rust-unofficial/awesome-rust" class="r-stretch"></iframe>
+					
+					<!---->
+					Note:
+					And if all that wasn't enough, here's a big old list.
+
+					I'm not saying Rust is uniquely awesome, or even always the right choice, but it's compelling to me, and I think you should give it a chance.
+
+					Thanks!
 				</textarea>
 			</section>
-
-			<!--  <iframe data-src="" class="r-stretch"></iframe>  -->
 		</div>
 	</div>
 
